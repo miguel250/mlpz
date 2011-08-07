@@ -2,11 +2,28 @@
 <html lang="en">
 <head>
 <meta charset=utf-8 />
-<meta name="description" content="Miguel Perez Back-End developer residing in the New York area.">
-<meta name="keywords" content="Miguel Perez, PHP, Symfony2, Web Developer, New york, Back-End Devepoer, New York">
-<title>Miguel Perez</title>
+<meta name="description" content="{% block description%}Miguel Perez Back-End developer residing in the New York area.{% endblock %}">
+<meta name="keywords" content="{% block keywords%}Miguel Perez, PHP, Symfony2, Web Developer, New york, Back-End Devepoer, New York{% endblock %}">
+<title>{% block title %} Miguel Perez {% endblock %}</title>
 </head>
 <body>
+{% block content %}
 <h4>Coming soon!!!</h4>
+{% endblock %}
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24416295-1']);
+  _gaq.push(['_setDomainName', 'mlpz.mp']);
+  _gaq.push(['_setAllowHash', 'false']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 </body>
 </html>
