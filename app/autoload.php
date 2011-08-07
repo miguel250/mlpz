@@ -17,6 +17,7 @@ $loader->registerNamespaces(array(
     'Doctrine\\ODM\\MongoDB'    => __DIR__.'/../vendor/doctrine-mongodb-odm/lib',
     'Doctrine\\MongoDB'         => __DIR__.'/../vendor/doctrine-mongodb/lib',
     'Doctrine'                  => __DIR__.'/../vendor/doctrine/lib',
+    'FOS' => __DIR__.'/../vendor/bundles',
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',

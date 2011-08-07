@@ -69,3 +69,7 @@ doctrine_mongodb:
     document_managers:
         default:
             auto_mapping: true
+fos_user:
+    db_driver: mongodb # other valid values are 'mongodb', 'couchdb'
+    firewall_name: main
+    user_class:  MZ\BlogBundle\Document\User
