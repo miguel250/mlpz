@@ -72,4 +72,4 @@ doctrine_mongodb:
 fos_user:
     db_driver: mongodb # other valid values are 'mongodb', 'couchdb'
     firewall_name: main
-    user_class:  MZ\BlogBundle\Document\User
+    user_class:  MZ\BlogBundle\Document\Users
