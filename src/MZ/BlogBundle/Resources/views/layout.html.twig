@@ -6,7 +6,7 @@
 <meta name="description" content="{% block description%}Miguel Perez Back-End developer residing in the New York area.{% endblock %}">
 <meta name="keywords" content="{% block keywords%}Miguel Perez, PHP, Symfony2, Web Developer, New york, Back-End Devepoer, New York{% endblock %}">
 </head>
-<body>
+<body {% if is_granted('ROLE_ADMIN') %}onLoad="javascript:_gaq.push(['_setVar','exclude_me'])"{% endif %} }>
 {% block content %}
 <h4>Coming soon!!!</h4>
 {% endblock %}
