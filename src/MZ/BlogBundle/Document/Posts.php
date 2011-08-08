@@ -22,11 +22,16 @@ class Posts
 	private $title;
 	
 	/**
-	 * @MongoDB\Index 
+	 * @MongoDB\Index(background=true)
 	 * @MongoDB\String
 	 */
 	private $slug;
 
+	/**
+	 * @MongoDB\String
+	 */
+	private $username;
+	
 	/**
 	 * @MongoDB\String
 	 */
@@ -38,9 +43,9 @@ class Posts
 	private $body;
 	
 	/**
-	 * @MongoDB\Collection
+	 * @MongoDB\ReferenceMany(targetDocument="Tags", cascade="all")
 	 */
-	private $tags;
+	private $tags = array();
 
 	/**
 	 * @MongoDB\date
@@ -51,8 +56,8 @@ class Posts
 	public function __construct()
 	{
 		$this->createdAt = new DateTime();
-		$this->tags = new ArrayCollection();
 	}
+
     /**
      * Get id
      *
@@ -80,7 +85,7 @@ class Posts
      * @return string $title
      */
     public function getTitle()
-    {  
+    {
         return $this->title;
     }
 
@@ -93,7 +98,6 @@ class Posts
     {
     	$slug = preg_replace('/\W+/', '-', $slug);
     	$slug = strtolower(trim($slug, '-'));
-    	
         $this->slug = $slug;
     }
 
@@ -148,19 +152,19 @@ class Posts
     }
 
     /**
-     * Set tags
+     * Add tags
      *
-     * @param string $tags
+     * @param MZ\BlogBundle\Document\Tags $tags
      */
-    public function setTags($tags)
+    public function addTags(\MZ\BlogBundle\Document\Tags $tags)
     {
-        $this->tags = $tags;
+        $this->tags[] = $tags;
     }
 
     /**
      * Get tags
      *
-     * @return string $tags
+     * @return Doctrine\Common\Collections\Collection $tags
      */
     public function getTags()
     {
@@ -170,10 +174,31 @@ class Posts
     /**
      * Get createdAt
      *
-     * @return timestamp $createdAt
+     * @return date $createdAt
      */
     public function getCreatedAt()
     {
         return $this->createdAt;
     }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string $username
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
 }
