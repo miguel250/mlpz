@@ -1,0 +1,18 @@
+{% extends "MZBlogBundle::layout.html.twig" %}
+
+{% block content %}
+
+{% for archive in Archives %}
+
+{{ archive.date }}
+
+{% for post in archive.posts %}
+
+{{ post.title }}
+{{ post.body }}
+
+{% endfor %}
+
+{% endfor %}
+
+{% endblock %}
