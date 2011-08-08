@@ -1,1 +1,13 @@
 {% extends "MZBlogBundle::layout.html.twig" %}
+
+{% block content %}
+<h4>Coming soon!!!</h4>
+
+{% for post in  Posts %}
+
+{{ post.title }}
+{{ post.body }}
+
+{% endfor %}
+
+{% endblock %}
