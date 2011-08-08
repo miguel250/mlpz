@@ -3,8 +3,8 @@ set :domain,      "#{application}.mp"
 set :deploy_to,   "/usr/share/nginx/www/#{application}"
 set :app_path,    "app"
 
-
-set :php_bin, "/usr/sbin/php5-fpm"
+ssh_options[:keys] = "/Users/miguel/Downloads/Miguel.pem"
+set :php_bin, "/usr/bin/php"
 set :use_sudo, false
 set :user, 'ubuntu'
 set :repository,  "https://github.com/miguel250/#{application}.git"
@@ -18,3 +18,4 @@ role :app,        domain                         # This may be the same as your 
 role :db,         domain, :primary => true       # This is where Rails migrations will run
 
 set  :keep_releases,  3
+after "deploy", "deploy:cleanup"
