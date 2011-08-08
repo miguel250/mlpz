@@ -17,7 +17,6 @@ class Posts
 	private $id;
 
 	/**
-	 * @Gedmo:Sluggable
 	 * @MongoDB\String
 	 */
 	private $title;
