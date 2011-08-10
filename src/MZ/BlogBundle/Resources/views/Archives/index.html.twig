@@ -5,12 +5,12 @@
 {% for archive in Archives %}
 
 {{ archive.date }}
-
+{% set count = 0 %}
 {% for post in archive.posts %}
 
 {{ post.title }}
 {{ post.body }}
-
+{{ count + 1 }}
 {% endfor %}
 
 {% endfor %}
