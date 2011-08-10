@@ -13,6 +13,9 @@ class PostsController extends Controller
 	 */
 	public function indexAction($slug)
 	{
-		return array();
+		$dm = $this->get('doctrine.odm.mongodb.document_manager');
+		$post = $dm->getRepository('MZBlogBundle:Posts')->findOneBySlug($slug);
+		
+		return array('post'=>$post);
 	}
 }
