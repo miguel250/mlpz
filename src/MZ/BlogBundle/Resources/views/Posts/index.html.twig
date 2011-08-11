@@ -1,4 +1,11 @@
 {% extends "MZBlogBundle::layout.html.twig" %}
+
+
+{% block description %}{{ post.description }}{% endblock %}
+
+{% block keywords %}{{ post.keywords }}{% endblock %}
+
+
 {% block content %}
 {{ post.title }}
 {{ post.body }}
