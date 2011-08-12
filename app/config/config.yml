@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    translator:      { fallback: en }
+    translator:      { fallback: en_US }
     secret:          %secret%
     charset:         UTF-8
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
@@ -73,3 +73,5 @@ fos_user:
     db_driver: mongodb # other valid values are 'mongodb', 'couchdb'
     firewall_name: main
     user_class:  MZ\BlogBundle\Document\Users
+
+knp_time: ~

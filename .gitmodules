@@ -55,3 +55,6 @@
 [submodule "vendor/bundles/FOS/UserBundle"]
 	path = vendor/bundles/FOS/UserBundle
 	url = git://github.com/FriendsOfSymfony/FOSUserBundle.git
+[submodule "vendor/bundles/Knp/Bundle/TimeBundle"]
+	path = vendor/bundles/Knp/Bundle/TimeBundle
+	url = git://github.com/knplabs/KnpTimeBundle.git
