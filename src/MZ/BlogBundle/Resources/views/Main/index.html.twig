@@ -4,13 +4,15 @@
 
 {% for post in  Posts %}
 <!-- post -->
+{% if post.type == 'post'%}
 <div id="post-{{ post.id }}">
 <div class="post-panel">
 <h2 class="post-title"><a href="{{ path('mz_blog_posts_index',{ 'slug': post.slug }) }}">{{ post.title }}</a></h2>
 <p>{{ post.body }}</p>
 </div>
-<div class="meta">{{ time_diff(post.createdAt) }}</div>
+<div class="meta"> {% for tag in post.tags %} {{ tag.name }}{% if not loop.last %}, {% endif%}{% endfor%} {{ time_diff(post.createdAt) }}</div>
 </div>
+{% endif %}
 <!-- /post -->
 {% endfor %}
 
