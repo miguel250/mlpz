@@ -11,7 +11,7 @@ class TagsController extends Controller
 {
 	/**
 	 * @Route("/tag/{name}")
-	 *  @Template("SensioBlogBundle:Post:show")
+	 *  @Template()
 	 */
 	public function indexAction($name)
 	{
