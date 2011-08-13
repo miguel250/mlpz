@@ -1,7 +1,9 @@
 {% extends "MZBlogBundle::layout.html.twig" %}
 
-{% block content %}
+{% block title %} Miguel Perez &bull; Posts Tagged &lsquo;{{ tag.name }}&lsquo;{% endblock %}
+{% block description%}{% endblock %}
 
+{% block content %}
 {% for post in  tag.post %}
 <!-- post -->
 {% if post.type == 'post'%}
