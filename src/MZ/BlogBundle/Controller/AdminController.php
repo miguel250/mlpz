@@ -51,7 +51,7 @@ class AdminController extends Controller
 		}
 
 		$form = $this->get('mz_blog.PostForm');
-		$postHandler = $this->get('mz_blog.NewPostHandler');
+		$postHandler = $this->get('mz_blog.EditPostHandler');
 
 		if($postHandler->Process($post)){
 			$slug = $postHandler->PostSlug();
