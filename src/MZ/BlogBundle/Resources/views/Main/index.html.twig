@@ -1,14 +1,17 @@
 {% extends "MZBlogBundle::layout.html.twig" %}
 
 {% block content %}
-<h4>Coming soon!!!</h4>
 
 {% for post in  Posts %}
-
-<h1><a href="{{ path('mz_blog_posts_index',{ 'slug': post.slug }) }}">{{ post.title }}</a></h1>
-{{ time_diff(post.createdAt) }}
+<!-- post -->
+<div id="post-{{ post.id }}">
+<div class="post-panel">
+<h2 class="post-title"><a href="{{ path('mz_blog_posts_index',{ 'slug': post.slug }) }}">{{ post.title }}</a></h2>
 <p>{{ post.body }}</p>
-
+</div>
+<div class="meta">{{ time_diff(post.createdAt) }}</div>
+</div>
+<!-- /post -->
 {% endfor %}
 
 {% endblock %}

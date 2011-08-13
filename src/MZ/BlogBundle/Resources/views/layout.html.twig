@@ -6,9 +6,22 @@
 <meta name="description" content="{% block description%}Miguel Perez Back-End developer residing in the New York area.{% endblock %}">
 <meta name="keywords" content="{% block keywords%}Miguel Perez, PHP, Symfony2, Web Developer, New york, Back-End Devepoer, New York{% endblock %}">
 </head>
-<body {% if is_granted('ROLE_ADMIN') %}onLoad="javascript:_gaq.push(['_setVar','exclude_me'])"{% endif %} }>
-{% block content %}
-{% endblock %}
+<body {% if is_granted('ROLE_ADMIN') %}onLoad="javascript:_gaq.push(['_setVar','exclude_me'])"{% endif %}>
+	<div id="header">
+		<div class="inner">
+			<h1 class="blog-title">
+				<a href='{{ path('mz_blog_main_index') }}'>Miguel's blog</a>
+			</h1>
+		</div>
+	</div>
+	<div id="page">
+		<div id="content">
+			{% block content %}
+			{% endblock %}
+		</div>
+		<div id="sidebar">Sidebar</div>
+		<div id="footer">footer</div>
+	</div>
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
