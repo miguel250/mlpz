@@ -10,6 +10,8 @@ class NewFormType extends AbstractType
 	public function buildForm(FormBuilder $builder, array $options)
 	{
 		$builder->add('title','text',array('label'=>'Post Tile'));
+		$builder->add('image','textarea',array('label'=>'Image'));
+		$builder->add('video','textarea',array('label'=>'Video'));
 		$builder->add('body','textarea');
 		$builder->add('type','choice',array('expanded'=> true,
 		'choices' => array('post' => 'Post','image' => 'Images', 'video' => 'Video')));

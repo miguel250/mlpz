@@ -4,8 +4,11 @@
 <form action="#" method="post"    {{ form_enctype(form) }}>
 {{ form_errors(form) }}
 {{ form_row(form.title) }}
-{{ form_widget(form.body) }}
 {{ form_widget(form.type) }}
+{{ form_row(form.image) }}
+{{ form_row(form.video) }}
+{{ form_widget(form.body) }}
+
 <label>SEO</label>
 {{ form_row(form.description) }}
 {{ form_row(form.keywords) }}

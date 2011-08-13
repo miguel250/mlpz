@@ -66,6 +66,16 @@ class Posts
 	 * @MongoDB\String
 	 */
 	private $keywords;
+	
+	/**
+	 * @MongoDB\String
+	 */
+	private $image;
+	
+	/**
+	 * @MongoDB\String
+	 */
+	private $video;
 
 	public function __construct()
 	{
@@ -269,4 +279,43 @@ class Posts
 		$this->keywords = $keywords;
 	}
 
+	/**
+	 * Set image
+	 *
+	 * @param string $image
+	 */
+	public function setImage($image)
+	{
+		$this->image = $image;
+	}
+	
+	/**
+	 * Get image
+	 *
+	 * @return string $image
+	 */
+	public function getImage()
+	{
+		return $this->image;
+	}
+	
+	/**
+	 * Set video
+	 *
+	 * @param string $video
+	 */
+	public function setVideo($video)
+	{
+		$this->video = $video;
+	}
+	
+	/**
+	 * Get video
+	 *
+	 * @return string $video
+	 */
+	public function getVideo()
+	{
+		return $this->video;
+	}
 }
