@@ -39,8 +39,8 @@ class NewFormHandler
 				$post = $this->dm->getRepository('MZBlogBundle:Posts')->findOneBySlug($this->post->getSlug());
 				
 				if(!empty($post)){
-					$date = date('d-n-y');
-					$slug = $this->post->getSlug().'-'.$date;
+					$date = date('dny');
+					$slug = $date.'-'.$this->post->getSlug();
 					$this->post->setSlug($slug);
 				}
 				
