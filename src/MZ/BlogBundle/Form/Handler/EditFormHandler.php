@@ -32,7 +32,7 @@ class EditFormHandler
 		$this->post = $post;
 		$this->form->setData($this->post);
 
-		if ('POST' == $this->request->getMethod($slug)) {
+		if ('POST' == $this->request->getMethod()) {
 				
 			$this->form->bindRequest($this->request);
 

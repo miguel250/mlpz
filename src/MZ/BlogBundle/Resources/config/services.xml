@@ -8,6 +8,7 @@
     <parameters>
         <parameter key="mz_blog.form.type.class">MZ\BlogBundle\Form\Type\NewFormType</parameter>
         <parameter key="mz_blog.form.handler.class">MZ\BlogBundle\Form\Handler\NewFormHandler</parameter>
+        <parameter key="mz_blog.form.new.handler.class">MZ\BlogBundle\Form\Handler\EditFormHandler</parameter>
     </parameters>
 
     <services>
@@ -24,7 +25,7 @@
             <argument type="service" id="doctrine.odm.mongodb.document_manager" />
         </service>
         
-        <service id="mz_blog.EditPostHandler" class="%mz_blog.form.handler.class%">
+        <service id="mz_blog.EditPostHandler" class="%mz_blog.form.new.handler.class%">
             <argument type="service" id="mz_blog.PostForm" />
             <argument type="service" id="request" strict= "false" />
             <argument type="service" id="doctrine.odm.mongodb.document_manager" />
