@@ -5,9 +5,9 @@
 
 {% for post in  Posts %}
 
-{{ post.title }}
-{{ post.body }}
+<h1><a href="{{ path('mz_blog_posts_index',{ 'slug': post.slug }) }}">{{ post.title }}</a></h1>
 {{ time_diff(post.createdAt) }}
+<p>{{ post.body }}</p>
 
 {% endfor %}
 

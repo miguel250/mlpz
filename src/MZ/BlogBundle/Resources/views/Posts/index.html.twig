@@ -7,7 +7,6 @@
 
 
 {% block content %}
-{{ post.title }}
-{{ post.body }}
-{{ time_diff(post.createdAt) }}
+<h1>{{ post.title }}</h1>{{ time_diff(post.createdAt) }}
+<p>{{ post.body }}</p>
 {% endblock %}
