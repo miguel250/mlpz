@@ -51,6 +51,7 @@ class NewFormHandler
 				
 				foreach ($tagsArray as $tag) {
 					$tags = new Tags();
+					$tag = trim($tag);
 					$dbTags = $this->dm->getRepository('MZBlogBundle:Tags')->findOneByName($tag);
 					if(empty($dbTags)){
 						$tags->setName($tag);
