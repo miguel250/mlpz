@@ -22,7 +22,7 @@ class Tags
 	private $name;
 	
 	/**
-	 * @MongoDB\ReferenceMany(targetDocument="Posts", cascade="all")
+	 * @MongoDB\ReferenceMany(targetDocument="Posts")
 	 */
 	private $post = array();
   
@@ -79,5 +79,11 @@ class Tags
     public function getPost()
     {
         return $this->post;
+    }
+    
+    public function removePost($id)
+    {
+    	$key = array_search($id, get_object_vars($this->getPost()));
+    	unset($this->post[$key]);
     }
 }

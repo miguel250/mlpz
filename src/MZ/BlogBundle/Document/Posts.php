@@ -318,4 +318,9 @@ class Posts
 	{
 		return $this->video;
 	}
+	
+	public function removeTags()
+	{
+		unset($this->tags);
+	}
 }

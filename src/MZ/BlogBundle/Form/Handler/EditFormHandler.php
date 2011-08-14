@@ -39,18 +39,31 @@ class EditFormHandler
 			if ($this->form->isValid()) {
 
 				$tagsArray = explode(",", strtolower($this->post->getTagString()));
-
+				$postTags = $this->post->getTags();
+				
+				$this->post->removeTags();
+				
 				$this->dm->flush();
+				
+				foreach ($postTags as $tag) {
+					$removeTags = $this->dm->getRepository('MZBlogBundle:Tags')->findOneByName($tag->getName());
+					$removeTags ->removePost($this->post->getId());
+					$this->dm->flush();
+				}
 
 				foreach ($tagsArray as $tag) {
 					$tags = new Tags();
+					$tag = trim($tag);
 					$dbTags = $this->dm->getRepository('MZBlogBundle:Tags')->findOneByName($tag);
+					
 					if(empty($dbTags)){
 						$tags->setName($tag);
 						$tags->addPost($this->post);
 						$this->post->addTags($tags);
 						$this->dm->flush();
 					}else{
+						
+						$this->dm->flush();
 						$dbTags->addPost($this->post);
 						$this->post->addTags($dbTags);
 						$this->dm->flush();
