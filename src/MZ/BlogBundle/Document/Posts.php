@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use DateTime;
 
 /**
- * @MongoDB\Document
+ * @MongoDB\Document(repositoryClass="MZ\BlogBundle\Document\PostsRepository")
  */
 class Posts
 {
