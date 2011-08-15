@@ -5,6 +5,10 @@
 <title>{% block title %} Miguel Perez {% endblock %}</title>
 <meta name="description" content="{% block description%}Miguel Perez Back-End developer residing in the New York area.{% endblock %}">
 <meta name="keywords" content="{% block keywords%}Miguel Perez, PHP, Symfony2, Web Developer, New york, Back-End Devepoer, New York{% endblock %}">
+<meta name="geo.region" content="US-NY" />
+<meta name="geo.placename" content="New York" />
+<meta name="geo.position" content="40.714353;-74.005973" />
+<meta name="ICBM" content="40.714353, -74.005973" />
 </head>
 <body {% if is_granted('ROLE_ADMIN') %}onLoad="javascript:_gaq.push(['_setVar','exclude_me'])"{% endif %}>
 	<div id="header">
