@@ -10,4 +10,5 @@
 {% block content %}
 <h1>{{ post.title }}</h1>{{ time_diff(post.createdAt) }}
 <p>{{ post.body | raw }}</p>
+{% if is_granted('ROLE_ADMIN') %}<a href="{{ path('mz_blog_admin_edit',{ 'slug': post.slug }) }}">Edit post</a>{% endif %}
 {% endblock %}
