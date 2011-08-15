@@ -76,6 +76,11 @@ class Posts
 	 * @MongoDB\String
 	 */
 	private $video;
+	
+	/**
+	 * @MongoDB\String
+	 */
+	private $link;
 
 	public function __construct()
 	{
@@ -319,6 +324,27 @@ class Posts
 		return $this->video;
 	}
 	
+	/**
+	 * Set link
+	 * @param string $link
+	 */
+	public function setLink($link)
+	{
+		$this->link = $link;
+	}
+	
+	/**
+	 * Get link
+	 * @return string $link
+	 */
+	public function getLink()
+	{
+	  return $this->link;
+	}
+	
+	/**
+	 * Remove tags from post
+	 */
 	public function removeTags()
 	{
 		unset($this->tags);
