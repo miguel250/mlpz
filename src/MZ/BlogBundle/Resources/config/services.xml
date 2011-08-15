@@ -30,6 +30,11 @@
             <argument type="service" id="request" strict= "false" />
             <argument type="service" id="doctrine.odm.mongodb.document_manager" />
         </service>
+        
+        <service id="twig.extension.readmore" class="MZ\BlogBundle\Twig\BlogExtension" public="false">
+            <tag name="twig.extension" />
+            <argument type="service" id="service_container" />
+        </service>
     </services>
  
 </container>
