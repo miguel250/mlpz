@@ -67,11 +67,19 @@ class NewFormHandler
 					}
 				}
 				
-				$archive = new Archives();
-				$archive->addPosts($this->post);
-				$this->dm->persist($archive);
-				$this->dm->flush();
 				
+			
+				$archive = new Archives();
+				$archivedb = $this->dm->getRepository('MZBlogBundle:Archives')->findOneByDate($archive->getDate());
+				
+				if(empty($archive)){
+					$archive->addPosts($this->post);
+					$this->dm->persist($archive);
+					$this->dm->flush();
+				}else{
+					$archivedb->addPosts($this->post);
+					$this->dm->flush();
+				}
 				$this->slug = $this->post->getSlug();
 				return true;
 			}

@@ -8,12 +8,15 @@
 {% for archive in Archives %}
 
 {{ archive.date }}
-{% set count = 0 %}
+
 {% for post in archive.posts %}
 
-{{ post.title }}
-{{ post.body }}
-{{ count + 1 }}
+<h2>{{ post.title }}</h2>
+<p>{{ post.body | raw }}</p>
+
+{% if loop.last %}
+{{ loop.length }}
+{% endif %}
 {% endfor %}
 
 {% endfor %}
