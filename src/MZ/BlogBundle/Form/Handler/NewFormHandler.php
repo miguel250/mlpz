@@ -80,6 +80,9 @@ class NewFormHandler
 					$archivedb->addPosts($this->post);
 					$this->dm->flush();
 				}
+				
+				$sitemapURL = urlencode('http://www.mlpz.mp/sitemap.xml');
+				$pingGoogle = file_get_contents('http://www.google.com/webmasters/tools/ping?sitemap='.$sitemapURL);
 				$this->slug = $this->post->getSlug();
 				return true;
 			}
