@@ -16,7 +16,7 @@ class TagsController extends Controller
 	public function indexAction($name)
 	{
 		$dm = $this->get('doctrine.odm.mongodb.document_manager');
-		$tag = $dm->getRepository('MZBlogBundle:Tags')->findOneByName($name);
+		$tag = $dm->getRepository('MZBlogBundle:Tags')->findOneBySlug($name);
 		
 		if(empty($tag)){
 			throw new NotFoundHttpException("The tag couldn't be found");

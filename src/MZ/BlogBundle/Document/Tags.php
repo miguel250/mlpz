@@ -16,10 +16,15 @@ class Tags
 	private $id;
 	
 	/**
-	 * @MongoDB\Index(background=true)
 	 * @Mongodb\string
 	 */
 	private $name;
+	
+	/**
+	 * @MongoDB\Index(background=true)
+	 * @Mongodb\string
+	 */
+	private $slug;
 	
 	/**
 	 * @MongoDB\ReferenceMany(targetDocument="Posts")
@@ -48,6 +53,7 @@ class Tags
      */
     public function setName($name)
     {
+    	$this->setSlug($name);
         $this->name = $name;
     }
 
@@ -85,5 +91,21 @@ class Tags
     {
     	$key = array_search($id, get_object_vars($this->getPost()));
     	unset($this->post[$key]);
+    }
+    
+    /**
+     * Get Slug
+     * @return string
+     */
+    public function getSlug()
+    {
+    	return $this->slug;
+    }
+    
+    public function setSlug($slug)
+    {
+    	$slug = preg_replace('/\W+/', '-', $slug);
+    	$slug = strtolower(trim($slug, '-'));
+    	$this->slug = $slug;
     }
 }
