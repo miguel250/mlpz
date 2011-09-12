@@ -8,78 +8,80 @@ use MZ\BlogBundle\Document\Archives;
 
 class EditFormHandler
 {
-	private $post;
-	private $form;
-	private $request;
-	private $dm;
-	private $slug;
 
-	public function __construct($form, $request, $documentManager)
-	{
+    private $post;
+    private $form;
+    private $request;
+    private $dm;
+    private $slug;
 
-		$this->form = $form;
-		$this->request = $request;
-		$this->dm = $documentManager;
-	}
+    public function __construct($form, $request, $documentManager)
+    {
 
-	public function PostSlug()
-	{
-		return $this->slug;
-	}
+        $this->form = $form;
+        $this->request = $request;
+        $this->dm = $documentManager;
+    }
 
-	public function Process($post)
-	{
-		$this->post = $post;
-		$this->form->setData($this->post);
+    public function PostSlug()
+    {
+        return $this->slug;
+    }
 
-		if ('POST' == $this->request->getMethod()) {
-				
-			$this->form->bindRequest($this->request);
+    public function Process($post)
+    {
+        $this->post = $post;
+        $this->form->setData($this->post);
 
-			if ($this->form->isValid()) {
+        if ('POST' == $this->request->getMethod()) {
 
-				$tagsArray = explode(",", strtolower($this->post->getTagString()));
-				$postTags = $this->post->getTags();
-				
-				$this->post->removeTags();
-				
-				$this->dm->flush();
-				
-				foreach ($postTags as $tag) {
-					$removeTags = $this->dm->getRepository('MZBlogBundle:Tags')->findOneByName($tag->getName());
-					$removeTags ->removePost($this->post->getId());
-					$this->dm->flush();
-				}
+            $this->form->bindRequest($this->request);
 
-				foreach ($tagsArray as $tag) {
-					$tags = new Tags();
-					$tag = trim($tag);
-					$dbTags = $this->dm->getRepository('MZBlogBundle:Tags')->findOneByName($tag);
-					
-					if(empty($dbTags)){
-						$tags->setName($tag);
-						$tags->addPost($this->post);
-						$this->post->addTags($tags);
-						$this->dm->flush();
-					}else{
-						
-						$this->dm->flush();
-						$dbTags->addPost($this->post);
-						$this->post->addTags($dbTags);
-						$this->dm->flush();
-					}
-				}
+            if ($this->form->isValid()) {
 
-				$archive = new Archives();
-				$archive->addPosts($this->post);
-				$this->dm->flush();
+                $tagsArray = explode(",", strtolower($this->post->getTagString()));
+                $postTags = $this->post->getTags();
 
-				$this->slug = $this->post->getSlug();
-				return true;
-			}
-		}
+                $this->post->removeTags();
 
-		return false;
-	}
+                $this->dm->flush();
+
+                foreach ($postTags as $tag) {
+                    $removeTags = $this->dm->getRepository('MZBlogBundle:Tags')->findOneByName($tag->getName());
+                    $removeTags->removePost($this->post->getId());
+                    $this->dm->flush();
+                }
+
+                foreach ($tagsArray as $tag) {
+                    $tags = new Tags();
+                    $tag = trim($tag);
+                    $dbTags = $this->dm->getRepository('MZBlogBundle:Tags')->findOneByName($tag);
+
+                    if (empty($dbTags)) {
+                        $tags->setName($tag);
+                        $tags->addPost($this->post);
+                        $this->post->addTags($tags);
+                        $this->dm->flush();
+                    } else {
+
+                        $this->dm->flush();
+                        $dbTags->addPost($this->post);
+                        $this->post->addTags($dbTags);
+                        $this->dm->flush();
+                    }
+                }
+
+                $archive = new Archives();
+                $archive->addPosts($this->post);
+                $this->dm->flush();
+
+                $this->slug = $this->post->getSlug();
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }
 

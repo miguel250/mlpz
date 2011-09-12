@@ -11,342 +11,344 @@ use DateTime;
  */
 class Posts
 {
-	/**
-	 * @MongoDB\Id(strategy="auto")
-	 */
-	private $id;
 
-	/**
-	 * @MongoDB\String
-	 */
-	private $title;
+    /**
+     * @MongoDB\Id(strategy="auto")
+     */
+    private $id;
 
-	/**
-	 * @MongoDB\Index(background=true)
-	 * @MongoDB\String
-	 */
-	private $slug;
+    /**
+     * @MongoDB\String
+     */
+    private $title;
 
-	/**
-	 * @MongoDB\String
-	 */
-	private $userid;
+    /**
+     * @MongoDB\Index(background=true)
+     * @MongoDB\String
+     */
+    private $slug;
 
-	/**
-	 * @MongoDB\String
-	 */
-	private $type = 'post';
+    /**
+     * @MongoDB\String
+     */
+    private $userid;
 
-	/**
-	 * @MongoDB\String
-	 */
-	private $body;
+    /**
+     * @MongoDB\String
+     */
+    private $type = 'post';
 
-	/**
-	 * @MongoDB\ReferenceMany(targetDocument="Tags", cascade="all")
-	 */
-	private $tags = array();
+    /**
+     * @MongoDB\String
+     */
+    private $body;
 
-	/**
-	 * @MongoDB\String
-	 */
-	private $tagString;
+    /**
+     * @MongoDB\ReferenceMany(targetDocument="Tags", cascade="all")
+     */
+    private $tags = array();
 
-	/**
-	 * @MongoDB\date
-	 */
-	private $createdAt;
+    /**
+     * @MongoDB\String
+     */
+    private $tagString;
 
-	/**
-	 * @MongoDB\String
-	 */
-	private $description;
+    /**
+     * @MongoDB\date
+     */
+    private $createdAt;
 
-	/**
-	 * @MongoDB\String
-	 */
-	private $keywords;
-	
-	/**
-	 * @MongoDB\String
-	 */
-	private $image;
-	
-	/**
-	 * @MongoDB\String
-	 */
-	private $video;
-	
-	/**
-	 * @MongoDB\String
-	 */
-	private $link;
+    /**
+     * @MongoDB\String
+     */
+    private $description;
 
-	public function __construct()
-	{
-		$this->createdAt = new DateTime();
-	}
+    /**
+     * @MongoDB\String
+     */
+    private $keywords;
 
-	/**
-	 * Get id
-	 *
-	 * @return id $id
-	 */
-	public function getId()
-	{
-		return $this->id;
-	}
+    /**
+     * @MongoDB\String
+     */
+    private $image;
 
-	/**
-	 * Set title
-	 *
-	 * @param string $title
-	 */
-	public function setTitle($title)
-	{
-		$this->setSlug($title);
-		$this->title = $title;
-	}
+    /**
+     * @MongoDB\String
+     */
+    private $video;
 
-	/**
-	 * Get title
-	 *
-	 * @return string $title
-	 */
-	public function getTitle()
-	{
-		return $this->title;
-	}
+    /**
+     * @MongoDB\String
+     */
+    private $link;
 
-	/**
-	 * Set slug
-	 *
-	 * @param string $slug
-	 */
-	public function setSlug($slug)
-	{
-		$slug = preg_replace('/\W+/', '-', $slug);
-		$slug = strtolower(trim($slug, '-'));
-		$this->slug = $slug;
-	}
+    public function __construct()
+    {
+        $this->createdAt = new DateTime();
+    }
 
-	/**
-	 * Get slug
-	 *
-	 * @return string $slug
-	 */
-	public function getSlug()
-	{
-		return $this->slug;
-	}
+    /**
+     * Get id
+     *
+     * @return id $id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-	/**
-	 * Set type
-	 *
-	 * @param string $type
-	 */
-	public function setType($type)
-	{
-		$this->type = $type;
-	}
+    /**
+     * Set title
+     *
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->setSlug($title);
+        $this->title = $title;
+    }
 
-	/**
-	 * Get type
-	 *
-	 * @return string $type
-	 */
-	public function getType()
-	{
-		return $this->type;
-	}
+    /**
+     * Get title
+     *
+     * @return string $title
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 
-	/**
-	 * Set body
-	 *
-	 * @param string $body
-	 */
-	public function setBody($body)
-	{
-		$this->body = $body;
-	}
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $slug = preg_replace('/\W+/', '-', $slug);
+        $slug = strtolower(trim($slug, '-'));
+        $this->slug = $slug;
+    }
 
-	/**
-	 * Get body
-	 *
-	 * @return string $body
-	 */
-	public function getBody()
-	{
-		return $this->body;
-	}
+    /**
+     * Get slug
+     *
+     * @return string $slug
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
 
-	/**
-	 * Add tags
-	 *
-	 * @param MZ\BlogBundle\Document\Tags $tags
-	 */
-	public function addTags(\MZ\BlogBundle\Document\Tags $tags)
-	{
-		$this->tags[] = $tags;
-	}
+    /**
+     * Set type
+     *
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
 
-	/**
-	 * Get tags
-	 *
-	 * @return Doctrine\Common\Collections\Collection $tags
-	 */
-	public function getTags()
-	{
-		return $this->tags;
-	}
+    /**
+     * Get type
+     *
+     * @return string $type
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
 
-	/**
-	 * Get createdAt
-	 *
-	 * @return date $createdAt
-	 */
-	public function getCreatedAt()
-	{
-		return $this->createdAt;
-	}
+    /**
+     * Set body
+     *
+     * @param string $body
+     */
+    public function setBody($body)
+    {
+        $this->body = $body;
+    }
 
-	/**
-	 * Set username
-	 *
-	 * @param string $username
-	 */
-	public function setUserId($userid)
-	{
-		$this->userid = $userid;
-	}
+    /**
+     * Get body
+     *
+     * @return string $body
+     */
+    public function getBody()
+    {
+        return $this->body;
+    }
 
-	/**
-	 * Get username
-	 *
-	 * @return string $username
-	 */
-	public function getUserId()
-	{
-		return $this->userid;
-	}
+    /**
+     * Add tags
+     *
+     * @param MZ\BlogBundle\Document\Tags $tags
+     */
+    public function addTags(\MZ\BlogBundle\Document\Tags $tags)
+    {
+        $this->tags[] = $tags;
+    }
 
-	/**
-	 * Get tags string
-	 * @return string
-	 */
-	public function getTagString()
-	{
-		return $this->tagString;
-	}
+    /**
+     * Get tags
+     *
+     * @return Doctrine\Common\Collections\Collection $tags
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
 
-	/**
-	 * Set Tags string
-	 * @param string $tagString
-	 */
-	public function setTagString($tagString)
-	{
-		$this->tagString = $tagString;
-	}
+    /**
+     * Get createdAt
+     *
+     * @return date $createdAt
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
 
-	/**
-	 * Get post description
-	 * @return string
-	 */
-	public function getDescription()
-	{
-		return $this->description;
-	}
+    /**
+     * Set username
+     *
+     * @param string $username
+     */
+    public function setUserId($userid)
+    {
+        $this->userid = $userid;
+    }
 
-	/**
-	 * Set post description
-	 * @param string $description
-	 */
-	public function setDescription($description)
-	{
-		$this->description = $description;
-	}
+    /**
+     * Get username
+     *
+     * @return string $username
+     */
+    public function getUserId()
+    {
+        return $this->userid;
+    }
 
-	/**
-	 * Get post keywords
-	 * @return string
-	 */
-	public function getKeyWords()
-	{
-		return $this->keywords;
-	}
+    /**
+     * Get tags string
+     * @return string
+     */
+    public function getTagString()
+    {
+        return $this->tagString;
+    }
 
-	/**
-	 * Set post keywords
-	 * @param string $keywords
-	 */
-	public function setKeyWords($keywords)
-	{
-		$this->keywords = $keywords;
-	}
+    /**
+     * Set Tags string
+     * @param string $tagString
+     */
+    public function setTagString($tagString)
+    {
+        $this->tagString = $tagString;
+    }
 
-	/**
-	 * Set image
-	 *
-	 * @param string $image
-	 */
-	public function setImage($image)
-	{
-		$this->image = $image;
-	}
-	
-	/**
-	 * Get image
-	 *
-	 * @return string $image
-	 */
-	public function getImage()
-	{
-		return $this->image;
-	}
-	
-	/**
-	 * Set video
-	 *
-	 * @param string $video
-	 */
-	public function setVideo($video)
-	{
-		$this->video = $video;
-	}
-	
-	/**
-	 * Get video
-	 *
-	 * @return string $video
-	 */
-	public function getVideo()
-	{
-		return $this->video;
-	}
-	
-	/**
-	 * Set link
-	 * @param string $link
-	 */
-	public function setLink($link)
-	{
-		$this->link = $link;
-	}
-	
-	/**
-	 * Get link
-	 * @return string $link
-	 */
-	public function getLink()
-	{
-	  return $this->link;
-	}
-	
-	/**
-	 * Remove tags from post
-	 */
-	public function removeTags()
-	{
-		unset($this->tags);
-	}
+    /**
+     * Get post description
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set post description
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * Get post keywords
+     * @return string
+     */
+    public function getKeyWords()
+    {
+        return $this->keywords;
+    }
+
+    /**
+     * Set post keywords
+     * @param string $keywords
+     */
+    public function setKeyWords($keywords)
+    {
+        $this->keywords = $keywords;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string $image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set video
+     *
+     * @param string $video
+     */
+    public function setVideo($video)
+    {
+        $this->video = $video;
+    }
+
+    /**
+     * Get video
+     *
+     * @return string $video
+     */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+    /**
+     * Set link
+     * @param string $link
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+    }
+
+    /**
+     * Get link
+     * @return string $link
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * Remove tags from post
+     */
+    public function removeTags()
+    {
+        unset($this->tags);
+    }
+
 }

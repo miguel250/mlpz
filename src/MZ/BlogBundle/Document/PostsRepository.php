@@ -12,12 +12,14 @@ use Doctrine\ODM\MongoDB\DocumentRepository;
  */
 class PostsRepository extends DocumentRepository
 {
-	public function findAll()
-	{
-		$qb = $this->createQueryBuilder('Article')
-		->sort('createdAt', 'desc')
-		->getQuery()
-		->execute();;
-		return $qb;
-	}
+
+    public function findAll()
+    {
+        $qb = $this->createQueryBuilder('Article')
+               ->sort('createdAt', 'desc')
+               ->getQuery()
+               ->execute();
+        return $qb;
+    }
+
 }

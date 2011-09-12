@@ -14,6 +14,7 @@ use Symfony\Component\DependencyInjection\Loader;
  */
 class MZBlogExtension extends Extension
 {
+
     /**
      * {@inheritDoc}
      */
@@ -22,7 +23,8 @@ class MZBlogExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
     }
+
 }

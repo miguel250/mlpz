@@ -10,32 +10,33 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Tags
 {
-	/**
-	 * @MongoDB\Id(strategy="auto")
-	 */
-	private $id;
-	
-	/**
-	 * @Mongodb\string
-	 */
-	private $name;
-	
-	/**
-	 * @MongoDB\Index(background=true)
-	 * @Mongodb\string
-	 */
-	private $slug;
-	
-	/**
-	 * @MongoDB\ReferenceMany(targetDocument="Posts")
-	 */
-	private $post = array();
-  
+
+    /**
+     * @MongoDB\Id(strategy="auto")
+     */
+    private $id;
+
+    /**
+     * @Mongodb\string
+     */
+    private $name;
+
+    /**
+     * @MongoDB\Index(background=true)
+     * @Mongodb\string
+     */
+    private $slug;
+
+    /**
+     * @MongoDB\ReferenceMany(targetDocument="Posts")
+     */
+    private $post = array();
+
     public function __construct()
     {
         $this->post = new ArrayCollection();
     }
-    
+
     /**
      * Get id
      *
@@ -53,7 +54,7 @@ class Tags
      */
     public function setName($name)
     {
-    	$this->setSlug($name);
+        $this->setSlug($name);
         $this->name = $name;
     }
 
@@ -86,26 +87,27 @@ class Tags
     {
         return $this->post;
     }
-    
+
     public function removePost($id)
     {
-    	$key = array_search($id, get_object_vars($this->getPost()));
-    	unset($this->post[$key]);
+        $key = array_search($id, get_object_vars($this->getPost()));
+        unset($this->post[$key]);
     }
-    
+
     /**
      * Get Slug
      * @return string
      */
     public function getSlug()
     {
-    	return $this->slug;
+        return $this->slug;
     }
-    
+
     public function setSlug($slug)
     {
-    	$slug = preg_replace('/\W+/', '-', $slug);
-    	$slug = strtolower(trim($slug, '-'));
-    	$this->slug = $slug;
+        $slug = preg_replace('/\W+/', '-', $slug);
+        $slug = strtolower(trim($slug, '-'));
+        $this->slug = $slug;
     }
+
 }

@@ -10,9 +10,10 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
  */
 class Users extends BaseUser
 {
-	/**
-	 * @MongoDB\Id(strategy="auto")
-	 */
-	protected $id;
+
+    /**
+     * @MongoDB\Id(strategy="auto")
+     */
+    protected $id;
 
 }
