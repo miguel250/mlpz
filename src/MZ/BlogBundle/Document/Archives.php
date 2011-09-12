@@ -23,7 +23,7 @@ class Archives
     private $date;
 
     /**
-     *  @MongoDB\EmbedMany
+     *  @MongoDB\ReferenceMany(targetDocument="Posts")
      */
     private $posts = array();
 
@@ -42,6 +42,16 @@ class Archives
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
     }
 
     /**
