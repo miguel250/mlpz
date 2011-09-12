@@ -16,21 +16,6 @@ class ArchivesController extends Controller
      */
     public function indexAction()
     {
-        $dm = $this->get('doctrine.odm.mongodb.document_manager');
-        $allPost = $dm->getRepository('MZBlogBundle:Posts')->findAll();
-
-        $archive = $dm->getRepository('MZBlogBundle:Archives')->findOneByDate('AUGUST 2011');
-        if (empty($archive)) {
-            $archive = new Archives;
-            $archive->setDate('AUGUST 2011');
-        }
-        foreach ($allPost as $post) {
-            $archive->addPosts($post);
-            $dm->persist($archive);
-            $dm->flush();
-        }
-
-
         $archives = $dm->getRepository('MZBlogBundle:Archives')->findAll();
         return array('Archives' => $archives);
     }
